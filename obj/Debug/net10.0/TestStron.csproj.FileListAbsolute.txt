@@ -1,0 +1,14 @@
+C:\Users\Patryk\Desktop\tesseract-5.5.2\test\TestStron\bin\Debug\net10.0\TestStron.exe
+C:\Users\Patryk\Desktop\tesseract-5.5.2\test\TestStron\bin\Debug\net10.0\TestStron.deps.json
+C:\Users\Patryk\Desktop\tesseract-5.5.2\test\TestStron\bin\Debug\net10.0\TestStron.runtimeconfig.json
+C:\Users\Patryk\Desktop\tesseract-5.5.2\test\TestStron\bin\Debug\net10.0\TestStron.dll
+C:\Users\Patryk\Desktop\tesseract-5.5.2\test\TestStron\bin\Debug\net10.0\TestStron.pdb
+C:\Users\Patryk\Desktop\tesseract-5.5.2\test\TestStron\obj\Debug\net10.0\TestStron.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Patryk\Desktop\tesseract-5.5.2\test\TestStron\obj\Debug\net10.0\TestStron.AssemblyInfoInputs.cache
+C:\Users\Patryk\Desktop\tesseract-5.5.2\test\TestStron\obj\Debug\net10.0\TestStron.AssemblyInfo.cs
+C:\Users\Patryk\Desktop\tesseract-5.5.2\test\TestStron\obj\Debug\net10.0\TestStron.csproj.CoreCompileInputs.cache
+C:\Users\Patryk\Desktop\tesseract-5.5.2\test\TestStron\obj\Debug\net10.0\TestStron.dll
+C:\Users\Patryk\Desktop\tesseract-5.5.2\test\TestStron\obj\Debug\net10.0\refint\TestStron.dll
+C:\Users\Patryk\Desktop\tesseract-5.5.2\test\TestStron\obj\Debug\net10.0\TestStron.pdb
+C:\Users\Patryk\Desktop\tesseract-5.5.2\test\TestStron\obj\Debug\net10.0\TestStron.genruntimeconfig.cache
+C:\Users\Patryk\Desktop\tesseract-5.5.2\test\TestStron\obj\Debug\net10.0\ref\TestStron.dll
