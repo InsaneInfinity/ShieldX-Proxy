@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SHIELD-X V7 · Global Dashboard</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;600;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg:        #080b0f;
+    --surface:   #0d1117;
+    --border:    #1a2233;
+    --accent:    #00ffa3;
+    --danger:    #ff3b3b;
+    --warn:      #ffb800;
+    --geo:       #bf6aff;
+    --muted:     #3a4a5c;
+    --text:      #c9d8e8;
+    --mono:      'Share Tech Mono', monospace;
+    --sans:      'Barlow Condensed', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── grid noise overlay ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg,   transparent, transparent 39px, var(--border) 40px),
+      repeating-linear-gradient(90deg,  transparent, transparent 39px, var(--border) 40px);
+    opacity: .18;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── header ── */
+  header {
+    position: relative; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 32px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #0a1420 0%, transparent 100%);
+  }
+
+  .logo {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 1.7rem;
+    letter-spacing: .12em;
+    color: var(--accent);
+    text-shadow: 0 0 24px color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+  .logo span { color: var(--text); opacity: .5; }
+
+  .status-dot {
+    display: inline-block;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--muted);
+    margin-right: 8px;
+    transition: background .3s, box-shadow .3s;
+  }
+  .status-dot.live {
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; }
+    50%      { opacity: .4; }
+  }
+
+  .conn-label {
+    font-size: .72rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color .3s;
+  }
+  .conn-label.live { color: var(--accent); }
+
+  /* ── stat cards ── */
+  .stats-row {
+    position: relative; z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    border-bottom: 1px solid var(--border);
+    background: var(--border);
+  }
+
+  .stat-card {
+    background: var(--surface);
+    padding: 22px 28px;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+
+  .stat-label {
+    font-family: var(--sans);
+    font-weight: 300;
+    font-size: .78rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .stat-value {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 2.6rem;
+    line-height: 1;
+    color: var(--text);
+    transition: color .2s;
+  }
+
+  .stat-value.flash-danger { color: var(--danger); }
+  .stat-value.flash-warn   { color: var(--warn); }
+  .stat-value.flash-geo    { color: var(--geo); }
+
+  /* ── main layout ── */
+  .main {
+    position: relative; z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 0;
+    height: calc(100vh - 135px);
+  }
+
+  /* ── event feed ── */
+  .feed-panel {
+    border-right: 1px solid var(--border);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+
+  .panel-title {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: .75rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  #feed {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .event-row {
+    display: grid;
+    grid-template-columns: 90px 130px 52px 1fr 80px;
+    align-items: center;
+    padding: 10px 24px;
+    border-bottom: 1px solid var(--border);
+    font-size: .82rem;
+    gap: 12px;
+    animation: slideIn .25s ease-out;
+    transition: background .15s;
+  }
+  .event-row:hover { background: rgba(255,255,255,.02); }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .ev-time  { color: var(--muted); font-size: .75rem; }
+  .ev-ip    { color: var(--text); }
+  .ev-cc    {
+    text-align: center;
+    font-size: .7rem;
+    font-family: var(--sans);
+    font-weight: 600;
+    letter-spacing: .1em;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: var(--border);
+  }
+  .ev-msg   { color: var(--muted); font-size: .78rem; }
+
+  .badge {
+    font-size: .65rem;
+    font-family: var(--sans);
+    font-weight: 600;
+    letter-spacing: .08em;
+    padding: 3px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    justify-self: end;
+  }
+  .badge.ban  { background: rgba(255,59,59,.15); color: var(--danger); border: 1px solid rgba(255,59,59,.3); }
+  .badge.warn { background: rgba(255,184,0,.12); color: var(--warn);   border: 1px solid rgba(255,184,0,.3); }
+  .badge.geo  { background: rgba(191,106,255,.12); color: var(--geo);  border: 1px solid rgba(191,106,255,.3); }
+
+  /* feed header row */
+  .feed-header {
+    display: grid;
+    grid-template-columns: 90px 130px 52px 1fr 80px;
+    padding: 8px 24px;
+    gap: 12px;
+    font-size: .65rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    position: sticky; top: 0;
+    font-family: var(--sans);
+    font-weight: 600;
+  }
+
+  /* ── sidebar – banned IPs ── */
+  .side-panel {
+    display: flex; flex-direction: column; overflow: hidden;
+    background: var(--surface);
+  }
+
+  #banned-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .banned-row {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    animation: fadeIn .3s ease-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .banned-ip {
+    font-size: .88rem;
+    color: var(--danger);
+    margin-bottom: 2px;
+  }
+
+  .banned-meta {
+    font-size: .7rem;
+    color: var(--muted);
+  }
+
+  .banned-meta span { color: var(--geo); }
+
+  /* countdown timer per ban */
+  .ban-timer {
+    font-size: .7rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── empty state ── */
+  .empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    gap: 10px;
+    color: var(--muted);
+    font-size: .8rem;
+    letter-spacing: .1em;
+  }
+  .empty-icon { font-size: 2rem; opacity: .3; }
+
+  /* ── scanline effect ── */
+  body::after {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,.06) 0px,
+      rgba(0,0,0,.06) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">SHIELD<span>-</span>X <span style="font-size:1rem;font-weight:300">V7 · GLOBAL</span></div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <span class="status-dot" id="dot"></span>
+    <span class="conn-label" id="conn-label">ŁĄCZENIE…</span>
+  </div>
+</header>
+
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="stat-label">Bany ogółem</div>
+    <div class="stat-value" id="s-bans">0</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Ostrzeżenia</div>
+    <div class="stat-value" id="s-warns">0</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Blokady Geo</div>
+    <div class="stat-value" id="s-geo">0</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Aktywne bany</div>
+    <div class="stat-value" id="s-active">0</div>
+  </div>
+</div>
+
+<div class="main">
+  <!-- Feed -->
+  <div class="feed-panel">
+    <div class="panel-title">Live Event Feed</div>
+    <div class="feed-header">
+      <span>Czas</span><span>IP</span><span>Kraj</span><span>Zdarzenie</span><span>Typ</span>
+    </div>
+    <div id="feed">
+      <div class="empty" id="feed-empty">
+        <div class="empty-icon">◈</div>
+        <div>Brak zdarzeń · oczekuję połączenia…</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="side-panel">
+    <div class="panel-title">Aktywne Bany</div>
+    <div id="banned-list">
+      <div class="empty" id="ban-empty">
+        <div class="empty-icon">✓</div>
+        <div>Brak aktywnych banów</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── state ──────────────────────────────────────────────────────────────
+const stats = { bans: 0, warns: 0, geo: 0 };
+const activeBans = new Map(); // ip → { expiry: Date, country }
+const MAX_FEED_ROWS = 200;
+
+// ── DOM refs ───────────────────────────────────────────────────────────
+const feed       = document.getElementById('feed');
+const feedEmpty  = document.getElementById('feed-empty');
+const banList    = document.getElementById('banned-list');
+const banEmpty   = document.getElementById('ban-empty');
+const dot        = document.getElementById('dot');
+const connLabel  = document.getElementById('conn-label');
+
+// ── helpers ────────────────────────────────────────────────────────────
+const now = () => new Date().toLocaleTimeString('pl-PL', { hour12: false });
+
+function stat(id, val, flashClass) {
+  const el = document.getElementById(id);
+  el.textContent = val;
+  el.classList.add(flashClass);
+  setTimeout(() => el.classList.remove(flashClass), 600);
+}
+
+function addFeedRow(ip, country, message, badgeClass, badgeLabel) {
+  feedEmpty.style.display = 'none';
+
+  const row = document.createElement('div');
+  row.className = 'event-row';
+  row.innerHTML = `
+    <span class="ev-time">${now()}</span>
+    <span class="ev-ip">${ip}</span>
+    <span class="ev-cc">${country}</span>
+    <span class="ev-msg">${message}</span>
+    <span class="badge ${badgeClass}">${badgeLabel}</span>
+  `;
+  feed.prepend(row);
+
+  // Ogranicz liczbę wierszy
+  const rows = feed.querySelectorAll('.event-row');
+  if (rows.length > MAX_FEED_ROWS) rows[rows.length - 1].remove();
+}
+
+function refreshBanList() {
+  const rows = banList.querySelectorAll('.banned-row');
+  rows.forEach(r => r.remove());
+
+  const now_ = Date.now();
+  let count = 0;
+
+  for (const [ip, info] of activeBans) {
+    if (info.expiry <= now_) { activeBans.delete(ip); continue; }
+    count++;
+
+    const row = document.createElement('div');
+    row.className = 'banned-row';
+    row.dataset.ip = ip;
+
+    const remaining = Math.max(0, Math.floor((info.expiry - now_) / 1000));
+    const mins = String(Math.floor(remaining / 60)).padStart(2, '0');
+    const secs = String(remaining % 60).padStart(2, '0');
+
+    row.innerHTML = `
+      <div class="banned-ip">${ip}</div>
+      <div class="banned-meta">Kraj: <span>${info.country}</span></div>
+      <div class="ban-timer">Wygasa: ${new Date(info.expiry).toLocaleTimeString('pl-PL')} · <span class="countdown" data-ip="${ip}">${mins}:${secs}</span></div>
+    `;
+    banList.appendChild(row);
+  }
+
+  banEmpty.style.display = count === 0 ? 'flex' : 'none';
+  stat('s-active', count, '');
+}
+
+// ── countdown ticker ───────────────────────────────────────────────────
+setInterval(() => {
+  const now_ = Date.now();
+  document.querySelectorAll('.countdown').forEach(el => {
+    const ip   = el.dataset.ip;
+    const info = activeBans.get(ip);
+    if (!info) { el.closest('.banned-row')?.remove(); return; }
+
+    const rem  = Math.max(0, Math.floor((info.expiry - now_) / 1000));
+    const mins = String(Math.floor(rem / 60)).padStart(2, '0');
+    const secs = String(rem % 60).padStart(2, '0');
+    el.textContent = `${mins}:${secs}`;
+
+    if (rem === 0) {
+      activeBans.delete(ip);
+      el.closest('.banned-row')?.remove();
+      stat('s-active', activeBans.size, '');
+    }
+  });
+}, 1000);
+
+// ── SignalR connection ──────────────────────────────────────────────────
+const connection = new signalR.HubConnectionBuilder()
+  .withUrl('/shieldx-hub')
+  .withAutomaticReconnect([1000, 2000, 5000, 10000])
+  .build();
+
+connection.on('BanEvent', ({ ip, country, expiry, duration }) => {
+  stats.bans++;
+  stat('s-bans', stats.bans, 'flash-danger');
+
+  addFeedRow(ip, country,
+    `AUTO-BAN · wygasa ${expiry} UTC · ${duration} min`,
+    'ban', 'BAN');
+
+  // Dodaj do aktywnych banów
+  activeBans.set(ip, {
+    country,
+    expiry: Date.now() + duration * 60 * 1000
+  });
+  refreshBanList();
+});
+
+connection.on('ViolationEvent', ({ ip, country, count, threshold }) => {
+  stats.warns++;
+  stat('s-warns', stats.warns, 'flash-warn');
+
+  addFeedRow(ip, country,
+    `Przewinienie ${count}/${threshold} · przekroczono rate limit`,
+    'warn', 'WARN');
+});
+
+connection.on('GeoBlock', ({ ip, country }) => {
+  stats.geo++;
+  stat('s-geo', stats.geo, 'flash-geo');
+
+  addFeedRow(ip, country,
+    `Zablokowany region · Geo-IP policy`,
+    'geo', 'GEO');
+});
+
+async function startConnection() {
+  try {
+    await connection.start();
+    dot.classList.add('live');
+    connLabel.classList.add('live');
+    connLabel.textContent = 'LIVE';
+
+    // Poproś o aktualne statystyki
+    await connection.invoke('RequestStats');
+  } catch {
+    setTimeout(startConnection, 3000);
+  }
+}
+
+connection.onreconnecting(() => {
+  dot.classList.remove('live');
+  connLabel.classList.remove('live');
+  connLabel.textContent = 'PONOWNE ŁĄCZENIE…';
+});
+
+connection.onreconnected(() => {
+  dot.classList.add('live');
+  connLabel.classList.add('live');
+  connLabel.textContent = 'LIVE';
+});
+
+startConnection();
+</script>
+</body>
+</html>

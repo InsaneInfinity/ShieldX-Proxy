@@ -1,0 +1,186 @@
+[23:30:38] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[23:30:38]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[23:30:38]     Ban TTL       : 60 min
+[23:30:38]     Violation TTL : 60 min
+[23:30:38]     Geo-IP        : aktywny (3 krajów)
+[23:30:38]     Dashboard     : http://localhost:5000/dashboard.html
+[23:31:08] [OK] GET /dashboard.html od 127.0.0.1 [??]
+[23:31:08] [OK] GET /favicon.ico od 127.0.0.1 [??]
+[23:34:49] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[23:34:49]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[23:34:49]     Ban TTL       : 60 min
+[23:34:49]     Violation TTL : 60 min
+[23:34:49]     Geo-IP        : aktywny (3 krajów)
+[23:34:49]     Dashboard     : http://localhost:5000/dashboard.html
+[23:34:57] [OK] GET /dashboard.html od 127.0.0.1 [??]
+[23:35:26] [OK] GET /dashboard.html od 127.0.0.1 [??]
+[23:35:47] [OK] GET /dashboard.html od 127.0.0.1 [??]
+[23:42:35] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[23:42:35]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[23:42:35]     Ban TTL       : 60 min
+[23:42:35]     Violation TTL : 60 min
+[23:42:35]     Geo-IP        : aktywny (3 krajów)
+[23:42:35]     Dashboard     : http://localhost:5000/dashboard.html
+[23:42:51] [OK] GET /dashboard.html od 127.0.0.1 [??]
+[23:49:15] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[23:49:15]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[23:49:15]     Ban TTL       : 60 min
+[23:49:15]     Violation TTL : 60 min
+[23:49:15]     Geo-IP        : aktywny (3 krajów)
+[23:49:15]     Dashboard     : http://localhost:5000/dashboard.html
+[23:49:21] [OK] GET /dashboard.html od 127.0.0.1 [??]
+[23:49:38] [OK] GET /dashboard.html. od 127.0.0.1 [??]
+[23:52:42] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[23:52:42]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[23:52:42]     Ban TTL       : 60 min
+[23:52:42]     Violation TTL : 60 min
+[23:52:42]     Geo-IP        : aktywny (3 krajów)
+[23:52:42]     Dashboard     : http://localhost:5000/dashboard.html
+[23:52:45] [OK] GET /dashboard.html. od 127.0.0.1 [??]
+[23:52:58] [OK] GET /dashboard.html od 127.0.0.1 [??]
+[23:56:04] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[23:56:04]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[23:56:04]     Ban TTL       : 60 min
+[23:56:04]     Violation TTL : 60 min
+[23:56:04]     Geo-IP        : aktywny (3 krajów)
+[23:56:04]     Dashboard     : http://localhost:5000/dashboard.html
+[23:57:30] [OK] GET /proxy/test od ::1 [??]
+[23:57:30] [OK] GET /proxy/test od ::1 [??]
+[23:57:30] [OK] GET /proxy/test od ::1 [??]
+[23:57:31] [OK] GET /proxy/test od ::1 [??]
+[23:57:31] [OK] GET /proxy/test od ::1 [??]
+[23:57:31] [OK] GET /proxy/test od ::1 [??]
+[23:57:31] [OK] GET /proxy/test od ::1 [??]
+[23:57:31] [OK] GET /proxy/test od ::1 [??]
+[23:57:31] [OK] GET /proxy/test od ::1 [??]
+[23:57:31] [OK] GET /proxy/test od ::1 [??]
+[23:59:46] [OK] GET /proxy/ od 127.0.0.1 [??]
+[00:05:30] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[00:05:30]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[00:05:30]     Ban TTL       : 60 min
+[00:05:30]     Violation TTL : 60 min
+[00:05:30]     Geo-IP        : aktywny (3 krajów)
+[00:05:30]     Dashboard     : http://localhost:5000/dashboard.html
+[00:06:14] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[00:06:14]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[00:06:14]     Ban TTL       : 60 min
+[00:06:14]     Violation TTL : 60 min
+[00:06:14]     Geo-IP        : aktywny (3 krajów)
+[00:06:14]     Dashboard     : http://localhost:5000/dashboard.html
+[00:07:53] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[00:07:53]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[00:07:53]     Ban TTL       : 60 min
+[00:07:53]     Violation TTL : 60 min
+[00:07:53]     Geo-IP        : aktywny (3 krajów)
+[00:07:53]     Dashboard     : http://localhost:5000/dashboard.html
+[00:09:32] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[00:09:32]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[00:09:32]     Ban TTL       : 60 min
+[00:09:32]     Violation TTL : 60 min
+[00:09:32]     Geo-IP        : aktywny (3 krajów)
+[00:09:32]     Dashboard     : http://localhost:5000/dashboard.html
+[00:14:09] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[00:14:09]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[00:14:09]     Ban TTL       : 60 min
+[00:14:09]     Violation TTL : 60 min
+[00:14:09]     Geo-IP        : aktywny (3 krajów)
+[00:14:09]     Dashboard     : http://localhost:5000/dashboard.html
+[00:20:41] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[00:20:41]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[00:20:41]     Ban TTL       : 60 min
+[00:20:41]     Violation TTL : 60 min
+[00:20:41]     Geo-IP        : aktywny (3 krajów)
+[00:20:41]     Dashboard     : http://localhost:5000/dashboard.html
+[00:22:55] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[00:22:55]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[00:22:55]     Ban TTL       : 60 min
+[00:22:55]     Violation TTL : 60 min
+[00:22:55]     Geo-IP        : aktywny (3 krajów)
+[00:22:55]     Dashboard     : http://localhost:5000/dashboard.html
+[00:23:20] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[00:23:20]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[00:23:20]     Ban TTL       : 60 min
+[00:23:20]     Violation TTL : 60 min
+[00:23:20]     Geo-IP        : aktywny (3 krajów)
+[00:23:20]     Dashboard     : http://localhost:5000/dashboard.html
+[00:23:53] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[00:23:53]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[00:23:53]     Ban TTL       : 60 min
+[00:23:53]     Violation TTL : 60 min
+[00:23:53]     Geo-IP        : aktywny (3 krajów)
+[00:23:53]     Dashboard     : http://localhost:5000/dashboard.html
+[00:26:56] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[00:26:56]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[00:26:56]     Ban TTL       : 60 min
+[00:26:56]     Violation TTL : 60 min
+[00:26:56]     Geo-IP        : aktywny (3 krajów)
+[00:26:56]     Dashboard     : http://localhost:5000/dashboard.html
+[00:27:17] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[00:27:17]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[00:27:17]     Ban TTL       : 60 min
+[00:27:17]     Violation TTL : 60 min
+[00:27:17]     Geo-IP        : aktywny (3 krajów)
+[00:27:17]     Dashboard     : http://localhost:5000/dashboard.html
+[00:28:48] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[00:28:48]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[00:28:48]     Ban TTL       : 60 min
+[00:28:48]     Violation TTL : 60 min
+[00:28:48]     Geo-IP        : aktywny (3 krajów)
+[00:28:48]     Dashboard     : http://localhost:5000/dashboard.html
+[00:30:12] [OK] GET /proxy od 192.168.1.85 [??]
+[00:30:17] [OK] GET /proxy od 192.168.1.85 [??]
+[00:31:11] [OK] GET /proxy od 192.168.1.85 [??]
+[00:31:15] [OK] GET /proxy od 192.168.1.85 [??]
+[00:31:19] [OK] GET /proxy od 192.168.1.85 [??]
+[00:31:21] [OK] GET /proxy od 192.168.1.85 [??]
+[00:31:24] [OK] GET /proxy od 192.168.1.85 [??]
+[00:31:27] [OK] GET /proxy od 192.168.1.85 [??]
+[00:31:32] [OK] GET /proxy od 192.168.1.85 [??]
+[00:32:14] [OK] GET /proxy od 192.168.1.85 [??]
+[00:32:20] [OK] GET /proxy od 192.168.1.85 [??]
+[00:32:22] [OK] GET /proxy od 192.168.1.85 [??]
+[00:32:25] [OK] GET /proxy od 192.168.1.85 [??]
+[00:32:28] [OK] GET /proxy od 192.168.1.85 [??]
+[00:32:30] [OK] GET /proxy od 192.168.1.85 [??]
+[00:32:31] [OK] GET /proxy od 192.168.1.85 [??]
+[00:32:32] [OK] GET /proxy od 192.168.1.85 [??]
+[00:32:32] [!] OSTRZEZENIE: 192.168.1.85 [??] (Przewinienie: 1/3)
+[00:32:43] [OK] GET /proxy od 192.168.1.85 [??]
+[00:32:46] [OK] GET /proxy od 192.168.1.85 [??]
+[00:32:48] [OK] GET /proxy od 192.168.1.85 [??]
+[00:33:20] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[00:33:20]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[00:33:20]     Ban TTL       : 60 min
+[00:33:20]     Violation TTL : 60 min
+[00:33:20]     Geo-IP        : aktywny (3 krajów)
+[00:33:20]     Dashboard     : http://localhost:5000/dashboard.html
+[00:33:41] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[00:33:41]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[00:33:41]     Ban TTL       : 60 min
+[00:33:41]     Violation TTL : 60 min
+[00:33:41]     Geo-IP        : aktywny (3 krajów)
+[00:33:41]     Dashboard     : http://localhost:5000/dashboard.html
+[00:35:25] === SHIELD-X V7 [GLOBAL SCALE] URUCHOMIONY ===
+[00:35:25]     Redis         : localhost:6379,abortConnect=false,connectTimeout=3000
+[00:35:25]     Ban TTL       : 60 min
+[00:35:25]     Violation TTL : 60 min
+[00:35:25]     Geo-IP        : aktywny (3 krajów)
+[00:35:25]     Dashboard     : http://localhost:5000/dashboard.html
+[00:35:27] [OK] GET /proxy od 192.168.1.85 [??]
+[00:35:36] [OK] GET /proxy od 192.168.1.85 [??]
+[00:35:41] [OK] GET /proxy od 192.168.1.85 [??]
+[00:35:46] [OK] GET /proxy od 192.168.1.85 [??]
+[00:35:48] [OK] GET /proxy od 192.168.1.85 [??]
+[00:35:49] [OK] GET /proxy od 192.168.1.85 [??]
+[00:35:50] [OK] GET /proxy od 192.168.1.85 [??]
+[00:35:51] [OK] GET /proxy od 192.168.1.85 [??]
+[00:35:51] [OK] GET /proxy od 192.168.1.85 [??]
+[00:35:52] [!] OSTRZEZENIE: 192.168.1.85 [??] (Przewinienie: 2/3)
+[00:36:08] [OK] GET /proxy od 192.168.1.85 [??]
+[00:36:10] [OK] GET /proxy od 192.168.1.85 [??]
+[00:36:11] [OK] GET /proxy od 192.168.1.85 [??]
+[00:36:12] [OK] GET /proxy od 192.168.1.85 [??]
+[00:36:13] [OK] GET /proxy od 192.168.1.85 [??]
+[00:36:14] [!] OSTRZEZENIE: 192.168.1.85 [??] (Przewinienie: 3/3)
+[00:36:14] [!!!] AUTO-BAN: 192.168.1.85 [??] → wygasa za 60 min
+[00:36:14] [SYNC] Ban odebrany od innego węzła: 192.168.1.85
